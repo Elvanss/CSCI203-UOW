@@ -1,0 +1,101 @@
+(*)Purpose of the given subject:
+- A range of algorithms that look at common problems in computing.
+- A range of data structures that provide useful tools in coding these algorithms.
+- How to implement the algorithms:
+Correctly, Efficiently, Flexibly.
+- How to implement the data structures and the functions needed to use them:
+Correctly, Efficiently, Flexibly.
+- How to evaluate the complexity of algorithms
+
+(*) Peak-finding
+The suggestion to find the peak in such an array:
+- Find the maximum: 
+------------------------------------------------------------------------
+maximum = values[1]
+position = 1
+for index = 2 to n
+if (values[index] > maximum) then
+maximum = values[index]
+position = index
+fi
+rof
+print “the maximum value is ” , maximum, “ at position ”, position
+------------------------------------------------------------------------
+- Linear search:
+------------------------------------------------------------------------
+for index = 1 to n-1
+if values[index] >= values[index+1] then
+print “there is a peak with value ”,
+values[index],” at position ”,index
+stop
+fi
+rof
+print “there is a peak with value ”,values[n],” at position ”,n
+------------------------------------------------------------------------
+- Binary search:
+------------------------------------------------------------------------
+start = 1
+end = n
+repeat
+mid = (start + end)/2
+if values[mid] < values [mid - 1] then
+end = mid – 1
+else if values[mid] < values [mid + 1] then
+start = mid+1
+else
+print “peak found at position ”, mid, “with value”, values[mid]
+stop
+fi
+until forever
+------------------------------------------------------------------------
+- Binary search with test for termination
+------------------------------------------------------------------------
+start = 1
+end = n
+repeat
+mid = (start + end)/2
+if values[mid] < values [mid - 1] then
+end = mid – 1
+else if values[mid] < values [mid + 1] then
+start = mid+1
+else
+print “peak found at position ”, mid, “with value”,
+values[mid]
+stop
+fi
+until start >= end
+print “peak found at position ”, mid, “with value”, values[mid]
+------------------------------------------------------------------------
+- Other: 2D peaking 
+------------------------------------------------------------------------
+repeat
+find the largest element in the middle column of the remaining array
+if the element to its left is larger then
+throw away the right half of the array
+else if the element to its right is larger then
+throw away the left half of the array
+else
+the maximum is a peak
+fi
+until we have found a peak
+------------------------------------------------------------------------
+
+(*) BASIC DATA STRUCTURES
+- Few basic data structures: 
+    § Array.
+    § List.
+    § Stack.
+    § Queue.
+    § Record.
+
+(1). ARRAY
+- An array is a data structure consisting of a fixed number of
+data items of the same type
+    § E.g. table: array[1..50] of integer, letters: array[1..26] of character
+- Any array element is directly accessible via an index value
+    § E.g. x = array[27], initial = letters[7]
+- Arrays can have more than one index, multidimensional arrays
+    § E.g. heights: array[1..20,1..20] of real is an array with 400 elements
+- Initializing an array takes n operations for an array of n
+elements
+
